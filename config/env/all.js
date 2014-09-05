@@ -6,7 +6,7 @@ var path = require('path'),
 module.exports = {
   root: rootPath,
   http: {
-    port: process.env.PORT || 3000
+    port: process.env.PORT || 3300
   },
   https: {
     port: false,
@@ -23,7 +23,7 @@ module.exports = {
 
   // The secret should be set to a non-guessable string that
   // is used to compute a session hash
-  sessionSecret: 'MEAN',
+  sessionSecret: 'OPENHOMEBREW',
 
   // The name of the MongoDB collection to store sessions in
   sessionCollection: 'sessions',

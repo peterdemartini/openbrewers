@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  db: 'mongodb://localhost/mean-prod',
+  db: 'mongodb://localhost/openbrewers-prod',
   /**
    * Database options that will be passed directly to mongoose.connect
    * Below are some examples.
@@ -27,32 +27,32 @@ module.exports = {
     */
   },
   app: {
-    name: 'MEAN - A Modern Stack - Production'
+    name: 'Open Brewers: The community of home brew'
   },
   facebook: {
     clientID: 'APP_ID',
     clientSecret: 'APP_SECRET',
-    callbackURL: 'http://localhost:3000/auth/facebook/callback'
+    callbackURL: 'http://localhost:3300/auth/facebook/callback'
   },
   twitter: {
     clientID: 'CONSUMER_KEY',
     clientSecret: 'CONSUMER_SECRET',
-    callbackURL: 'http://localhost:3000/auth/twitter/callback'
+    callbackURL: 'http://localhost:3300/auth/twitter/callback'
   },
   github: {
     clientID: 'APP_ID',
     clientSecret: 'APP_SECRET',
-    callbackURL: 'http://localhost:3000/auth/github/callback'
+    callbackURL: 'http://localhost:3300/auth/github/callback'
   },
   google: {
     clientID: 'APP_ID',
     clientSecret: 'APP_SECRET',
-    callbackURL: 'http://localhost:3000/auth/google/callback'
+    callbackURL: 'http://localhost:3300/auth/google/callback'
   },
   linkedin: {
     clientID: 'API_KEY',
     clientSecret: 'SECRET_KEY',
-    callbackURL: 'http://localhost:3000/auth/linkedin/callback'
+    callbackURL: 'http://localhost:3300/auth/linkedin/callback'
   },
   emailFrom: 'SENDER EMAIL ADDRESS', // sender address like ABC <abc@example.com>
   mailer: {
