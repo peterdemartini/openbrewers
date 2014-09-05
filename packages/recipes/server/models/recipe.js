@@ -19,13 +19,16 @@ var RecipeSchema = new Schema({
     required : true
   },
   description : {
-    type : String,
-    required : true
+    type : String
   },
   created: {
     type: Date,
     default: Date.now
   },
+  updated: [{
+    type: Date,
+    default: Date.now
+  }],
   user: {
     type: Schema.ObjectId,
     ref: 'User'

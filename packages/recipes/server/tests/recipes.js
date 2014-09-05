@@ -30,7 +30,7 @@ describe('<Unit Test>', function() {
       user.save(function() {
         recipe = new Recipe({
           title: 'Recipe Title',
-          content: 'Recipe Content',
+          description: 'Recipe Description',
           user: user
         });
 
@@ -46,24 +46,6 @@ describe('<Unit Test>', function() {
           recipe.description.should.equal('Recipe Description');
           recipe.user.should.not.have.length(0);
           recipe.created.should.not.have.length(0);
-          done();
-        });
-      });
-
-      it('should be able to show an error when try to save without title', function(done) {
-        recipe.title = '';
-
-        return recipe.save(function(err) {
-          should.exist(err);
-          done();
-        });
-      });
-
-      it('should be able to show an error when try to save without content', function(done) {
-        recipe.content = '';
-
-        return recipe.save(function(err) {
-          should.exist(err);
           done();
         });
       });

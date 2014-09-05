@@ -1,9 +1,9 @@
 'use strict';
 
 (function() {
-  // Articles Controller Spec
+  // Recipes Controller Spec
   describe('MEAN controllers', function() {
-    describe('ArticlesController', function() {
+    describe('RecipesController', function() {
       // The $resource service augments the response object with methods for updating and deleting the resource.
       // If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
       // the responses exactly. To solve the problem, we use a newly-defined toEqualData Jasmine matcher.
@@ -20,11 +20,11 @@
       beforeEach(function() {
         module('mean');
         module('mean.system');
-        module('mean.articles');
+        module('mean.recipes');
       });
 
       // Initialize the controller and a mock scope
-      var ArticlesController,
+      var RecipesController,
         scope,
         $httpBackend,
         $stateParams,
@@ -37,7 +37,7 @@
 
         scope = $rootScope.$new();
 
-        ArticlesController = $controller('ArticlesController', {
+        RecipesController = $controller('RecipesController', {
           $scope: scope
         });
 
@@ -49,13 +49,13 @@
 
       }));
 
-      it('$scope.find() should create an array with at least one article object ' +
+      it('$scope.find() should create an array with at least one recipe object ' +
         'fetched from XHR', function() {
 
           // test expected GET request
-          $httpBackend.expectGET('articles').respond([{
-            title: 'An Article about MEAN',
-            content: 'MEAN rocks!'
+          $httpBackend.expectGET('recipes').respond([{
+            title: 'Brew Recipes',
+            description: 'Homebrew rules!'
           }]);
 
           // run controller
@@ -63,35 +63,35 @@
           $httpBackend.flush();
 
           // test scope value
-          expect(scope.articles).toEqualData([{
-            title: 'An Article about MEAN',
-            content: 'MEAN rocks!'
+          expect(scope.recipes).toEqualData([{
+            title: 'Brew Recipes',
+            description: 'Homebrew rules'
           }]);
 
         });
 
-      it('$scope.findOne() should create an array with one article object fetched ' +
-        'from XHR using a articleId URL parameter', function() {
+      it('$scope.findOne() should create an array with one recipe object fetched ' +
+        'from XHR using a recipeId URL parameter', function() {
           // fixture URL parament
-          $stateParams.articleId = '525a8422f6d0f87f0e407a33';
+          $stateParams.recipeId = '525a8422f6d0f87f0e407a33';
 
           // fixture response object
-          var testArticleData = function() {
+          var testRecipesData = function() {
             return {
-              title: 'An Article about MEAN',
-              content: 'MEAN rocks!'
+              title: 'Brew Recipes',
+              description: 'Homebrew rules'
             };
           };
 
           // test expected GET request with response object
-          $httpBackend.expectGET(/articles\/([0-9a-fA-F]{24})$/).respond(testArticleData());
+          $httpBackend.expectGET(/recipes\/([0-9a-fA-F]{24})$/).respond(testRecipesData());
 
           // run controller
           scope.findOne();
           $httpBackend.flush();
 
           // test scope value
-          expect(scope.article).toEqualData(testArticleData());
+          expect(scope.recipe).toEqualData(testRecipesData());
 
         });
 
@@ -100,28 +100,28 @@
         'locate to new object URL', function() {
 
           // fixture expected POST data
-          var postArticleData = function() {
+          var postRecipesData = function() {
             return {
-              title: 'An Article about MEAN',
-              content: 'MEAN rocks!'
+              title: 'Brew Recipes',
+              description: 'Homebrew rules'
             };
           };
 
           // fixture expected response data
-          var responseArticleData = function() {
+          var responseRecipesData = function() {
             return {
               _id: '525cf20451979dea2c000001',
-              title: 'An Article about MEAN',
-              content: 'MEAN rocks!'
+              title: 'Brew Recipes',
+              description: 'Homebrew rules'
             };
           };
 
           // fixture mock form input values
-          scope.title = 'An Article about MEAN';
-          scope.content = 'MEAN rocks!';
+          scope.title = 'Brew Recipes';
+          scope.description = 'Homebrew rules';
 
           // test post request is sent
-          $httpBackend.expectPOST('articles', postArticleData()).respond(responseArticleData());
+          $httpBackend.expectPOST('recipes', postRecipesData()).respond(responseRecipesData());
 
           // Run controller
           scope.create(true);
@@ -129,38 +129,38 @@
 
           // test form input(s) are reset
           expect(scope.title).toEqual('');
-          expect(scope.content).toEqual('');
+          expect(scope.description).toEqual('');
 
           // test URL location to new object
-          expect($location.path()).toBe('/articles/' + responseArticleData()._id);
+          expect($location.path()).toBe('/recipes/' + responseRecipesData()._id);
         });
 
-      it('$scope.update(true) should update a valid article', inject(function(Articles) {
+      it('$scope.update(true) should update a valid recipe', inject(function(Recipes) {
 
         // fixture rideshare
-        var putArticleData = function() {
+        var putRecipesData = function() {
           return {
             _id: '525a8422f6d0f87f0e407a33',
-            title: 'An Article about MEAN',
-            to: 'MEAN is great!'
+            title: 'Brew Recipes',
+            to: 'Homebrew rules'
           };
         };
 
-        // mock article object from form
-        var article = new Articles(putArticleData());
+        // mock recipe object from form
+        var recipe = new Recipes(putRecipesData());
 
-        // mock article in scope
-        scope.article = article;
+        // mock recipe in scope
+        scope.recipe = recipe;
 
         // test PUT happens correctly
-        $httpBackend.expectPUT(/articles\/([0-9a-fA-F]{24})$/).respond();
+        $httpBackend.expectPUT(/recipes\/([0-9a-fA-F]{24})$/).respond();
 
         // testing the body data is out for now until an idea for testing the dynamic updated array value is figured out
-        //$httpBackend.expectPUT(/articles\/([0-9a-fA-F]{24})$/, putArticleData()).respond();
+        //$httpBackend.expectPUT(/recipes\/([0-9a-fA-F]{24})$/, putRecipesData()).respond();
         /*
-                Error: Expected PUT /articles\/([0-9a-fA-F]{24})$/ with different data
-                EXPECTED: {"_id":"525a8422f6d0f87f0e407a33","title":"An Article about MEAN","to":"MEAN is great!"}
-                GOT:      {"_id":"525a8422f6d0f87f0e407a33","title":"An Article about MEAN","to":"MEAN is great!","updated":[1383534772975]}
+                Error: Expected PUT /recipes\/([0-9a-fA-F]{24})$/ with different data
+                EXPECTED: {"_id":"525a8422f6d0f87f0e407a33","title":"Brew Recipes","to":"MEAN is great!"}
+                GOT:      {"_id":"525a8422f6d0f87f0e407a33","title":"Brew Recipes","to":"MEAN is great!","updated":[1383534772975]}
                 */
 
         // run controller
@@ -168,33 +168,34 @@
         $httpBackend.flush();
 
         // test URL location to new object
-        expect($location.path()).toBe('/articles/' + putArticleData()._id);
+        expect($location.path()).toBe('/recipes/' + putRecipesData()._id);
 
       }));
 
-      it('$scope.remove() should send a DELETE request with a valid articleId ' +
-        'and remove the article from the scope', inject(function(Articles) {
+      it('$scope.remove() should send a DELETE request with a valid recipeId ' +
+        'and remove the recipe from the scope', inject(function(Recipes) {
 
           // fixture rideshare
-          var article = new Articles({
+          var recipe = new Recipes({
             _id: '525a8422f6d0f87f0e407a33'
           });
 
           // mock rideshares in scope
-          scope.articles = [];
-          scope.articles.push(article);
+          scope.recipes = [];
+          scope.recipes.push(recipe);
 
           // test expected rideshare DELETE request
-          $httpBackend.expectDELETE(/articles\/([0-9a-fA-F]{24})$/).respond(204);
+          $httpBackend.expectDELETE(/recipes\/([0-9a-fA-F]{24})$/).respond(204);
 
           // run controller
-          scope.remove(article);
+          scope.remove(recipe);
           $httpBackend.flush();
 
-          // test after successful delete URL location articles list
-          //expect($location.path()).toBe('/articles');
-          expect(scope.articles.length).toBe(0);
+          // test after successful delete URL location recipes list
+          //expect($location.path()).toBe('/recipes');
+          expect(scope.recipes.length).toBe(0);
 
         }));
     });
   });
+})();

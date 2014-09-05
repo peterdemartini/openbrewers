@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('mean.recipes').controller('RecipesController', ['$scope', 'Global', 'Recipes',
-  function($scope, Global, Recipes) {
-     $scope.global = Global;
+angular.module('mean.recipes')
+  .controller('RecipesController', ['$scope', '$stateParams', '$location', 'Global', 'Recipes',
+  function($scope, $stateParams, $location, Global, Recipes) {
+    $scope.global = Global;
 
     $scope.hasAuthorization = function(recipe) {
       if (!recipe || !recipe.user) return false;
@@ -71,6 +72,4 @@ angular.module('mean.recipes').controller('RecipesController', ['$scope', 'Globa
         $scope.recipe = recipe;
       });
     };
-  }
-  }
-]);
+}]);
