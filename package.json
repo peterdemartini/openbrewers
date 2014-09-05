@@ -1,24 +1,12 @@
 {
-  "name": "mean",
-  "description": "MEAN.io: A fullstack JavaScript framework powered by MongoDB, ExpressJS, AngularJS, NodeJS.",
+  "name": "openbrewers",
+  "description": "Open Brewers: The community of home brew.",
   "version": "0.4.0",
   "private": false,
-  "author": "Linnovate <mean@linnovate.net>",
+  "author": "Peter DeMartini <peter@superlativecode.com>",
   "contributors": [{
-    "name": "Lior Kesos",
-    "mail": "lior@linnovate.net"
-  }, {
-    "name": "Yonatan Ellman",
-    "mail": "yonatan@linnovate.net"
-  }, {
-    "name": "Drew Fyock",
-    "mail": "drew@steelbisondev.com"
-  }, {
-    "name": "Ehud Shahak",
-    "mail": "ehud@linnovate.net"
-  }, {
-    "name": "Amos Haviv",
-    "mail": "mail@amoshaviv.com"
+    "name": "Peter DeMartini",
+    "mail": "peter@superlativecode.com"
   }],
   "mean": "0.4.0",
   "repository": {
