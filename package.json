@@ -11,8 +11,6 @@
     }
   ],
   "mean": "0.4.0",
-  "mean-admin": "linnovate/mean-admin",
-  "mean-ga": "linnovate/mean-ga",
   "repository": {
     "type": "git",
     "url": "https://github.com/linnovate/mean.git"
