@@ -18,8 +18,15 @@ Recipes.register(function(app, auth, database) {
 
   //We are adding a link to the main menu for all authenticated users
   Recipes.menus.add({
-    title: 'recipes example page',
-    link: 'recipes example page',
+    title: 'Recipes',
+    link: '/recipes',
+    roles: ['authenticated'],
+    menu: 'main'
+  });
+
+  Recipes.menus.add({
+    title: 'Create Recipes',
+    link: '/recipes/create',
     roles: ['authenticated'],
     menu: 'main'
   });
@@ -40,7 +47,7 @@ Recipes.register(function(app, auth, database) {
         'anotherSettings': 'some value'
     });
 
-    // Get settings. Retrieves latest saved settigns
+    // Get settings. Retrieves latest saved settings
     Recipes.settings(function(err, settings) {
         //you now have the settings object
     });
