@@ -65,7 +65,7 @@
           // test scope value
           expect(scope.recipes).toEqualData([{
             title: 'Brew Recipes',
-            description: 'Homebrew rules'
+            description: 'Homebrew rules!'
           }]);
 
         });
@@ -79,7 +79,7 @@
           var testRecipesData = function() {
             return {
               title: 'Brew Recipes',
-              description: 'Homebrew rules'
+              description: 'Homebrew rules!'
             };
           };
 
@@ -103,7 +103,7 @@
           var postRecipesData = function() {
             return {
               title: 'Brew Recipes',
-              description: 'Homebrew rules'
+              description: 'Homebrew rules!'
             };
           };
 
@@ -118,7 +118,7 @@
 
           // fixture mock form input values
           scope.title = 'Brew Recipes';
-          scope.description = 'Homebrew rules';
+          scope.description = 'Homebrew rules!';
 
           // test post request is sent
           $httpBackend.expectPOST('recipes', postRecipesData()).respond(responseRecipesData());
@@ -142,7 +142,7 @@
           return {
             _id: '525a8422f6d0f87f0e407a33',
             title: 'Brew Recipes',
-            to: 'Homebrew rules'
+            to: 'Homebrew rules!'
           };
         };
 
