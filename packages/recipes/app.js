@@ -20,7 +20,7 @@ Recipes.register(function(app, auth, database) {
   Recipes.menus.add({
     title: 'Recipes',
     link: 'recipes',
-    roles: ['authenticated'],
+    roles: [],
     menu: 'main'
   });
 
@@ -30,28 +30,6 @@ Recipes.register(function(app, auth, database) {
     roles: ['authenticated'],
     menu: 'main'
   });
-
-  /**
-    //Uncomment to use. Requires meanio@0.3.7 or above
-    // Save settings with callback
-    // Use this for saving data from administration pages
-    Recipes.settings({
-        'someSetting': 'some value'
-    }, function(err, settings) {
-        //you now have the settings object
-    });
-
-    // Another save settings example this time with no callback
-    // This writes over the last settings.
-    Recipes.settings({
-        'anotherSettings': 'some value'
-    });
-
-    // Get settings. Retrieves latest saved settings
-    Recipes.settings(function(err, settings) {
-        //you now have the settings object
-    });
-    */
 
   return Recipes;
 });
