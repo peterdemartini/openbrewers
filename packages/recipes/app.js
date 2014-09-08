@@ -19,14 +19,14 @@ Recipes.register(function(app, auth, database) {
   //We are adding a link to the main menu for all authenticated users
   Recipes.menus.add({
     title: 'Recipes',
-    link: '/recipes',
+    link: 'recipes',
     roles: ['authenticated'],
     menu: 'main'
   });
 
   Recipes.menus.add({
     title: 'Create Recipes',
-    link: '/recipes/create',
+    link: 'recipes/create',
     roles: ['authenticated'],
     menu: 'main'
   });
