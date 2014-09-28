@@ -3,11 +3,11 @@
 /**
  * Module dependencies.
  */
+require('./stage');
+
 var mongoose = require('mongoose'),
+  Stage = mongoose.model('Stage'),
   Schema = mongoose.Schema;
-/**
- * Validations
- */
 
 /**
  * User Schema
@@ -19,6 +19,23 @@ var RecipeSchema = new Schema({
     required : true
   },
   description : {
+    type : String
+  },
+  type : {
+    type : Schema.ObjectId,
+    ref : 'BeerType'
+  },
+  abv : {
+    type: Number
+  },
+  originalGravity : {
+    type : Number
+  },
+  finalGravity : {
+    type : Number
+  },
+  stages : [ Stage ],
+  instructions : {
     type : String
   },
   created: {

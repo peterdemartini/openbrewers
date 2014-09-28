@@ -13,11 +13,11 @@ This package allows you to create recipes for home brew.
 - **Type:** Type of Beer
 	- type : String
 - **ABV:** Alcohol By Volume
-	- type : Float (Percentage)
+	- type : Number (Percentage)
 - **O.G.:** Original Gravity
-	- type : Float
+	- type : Number
 - **F.G.:** Final Gravity
-	- type : Float
+	- type : Number
 - **Stages:**
 	- type : [ Stage ]
 - **Instructions:**
@@ -26,6 +26,7 @@ This package allows you to create recipes for home brew.
 ## **Stage** Model
 
 - **Name:** Name of stage
+	- type : String
 - **Ingredients:**
 	- type : [ Ingredient ]
 - **Notes:**
@@ -34,5 +35,8 @@ This package allows you to create recipes for home brew.
 ## **Ingredient** Model
 
 - **Name:** Name of ingredient
-- **Type:**
-- **QTY:**
+	- type : String
+- **Type:** Type of ingredient
+	- type : String
+- **QTY:** QTY
+	- number : Number

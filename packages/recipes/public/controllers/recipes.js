@@ -14,7 +14,13 @@ angular.module('mean.recipes')
       if (isValid) {
         var recipe = new Recipes({
           title: this.title,
-          description: this.description
+          description: this.description,
+          type: this.type,
+          abv: this.abv,
+          originalGravity: this.originalGravity,
+          finalGravity: this.finalGravity,
+          stages: this.stages || [],
+          instructions: this.instructions
         });
         recipe.$save(function(response) {
           $location.path('recipes/' + response._id);
@@ -22,6 +28,12 @@ angular.module('mean.recipes')
 
         this.title = '';
         this.description = '';
+        this.type = '';
+        this.abv = 0;
+        this.originalGravity = 0;
+        this.finalGravity = 0;
+        this.stages = [];
+        this.instructions = '';
       } else {
         $scope.submitted = true;
       }

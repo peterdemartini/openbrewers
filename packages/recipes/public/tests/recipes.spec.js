@@ -2,7 +2,7 @@
 
 (function() {
   // Recipes Controller Spec
-  describe('MEAN controllers', function() {
+  describe('Open Brewers controllers', function() {
     describe('RecipesController', function() {
       // The $resource service augments the response object with methods for updating and deleting the resource.
       // If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
@@ -55,7 +55,12 @@
           // test expected GET request
           $httpBackend.expectGET('recipes').respond([{
             title: 'Brew Recipes',
-            description: 'Homebrew rules!'
+            description: 'Homebrew rules!',
+            abv: 0.07,
+            originalGravity: 1070,
+            finalGravity: 1015,
+            stages : [],
+            instructions : 'Do it right'
           }]);
 
           // run controller
@@ -65,7 +70,12 @@
           // test scope value
           expect(scope.recipes).toEqualData([{
             title: 'Brew Recipes',
-            description: 'Homebrew rules!'
+            description: 'Homebrew rules!',
+            abv: 0.07,
+            originalGravity: 1070,
+            finalGravity: 1015,
+            stages : [],
+            instructions : 'Do it right'
           }]);
 
         });
@@ -79,7 +89,12 @@
           var testRecipesData = function() {
             return {
               title: 'Brew Recipes',
-              description: 'Homebrew rules!'
+              description: 'Homebrew rules!',
+              abv: 0.07,
+              originalGravity: 1070,
+              finalGravity: 1015,
+              stages : [],
+              instructions : 'Do it right'
             };
           };
 
@@ -103,7 +118,12 @@
           var postRecipesData = function() {
             return {
               title: 'Brew Recipes',
-              description: 'Homebrew rules!'
+              description: 'Homebrew rules!',
+              abv: 0.07,
+              originalGravity: 1070,
+              finalGravity: 1015,
+              stages : [],
+              instructions : 'Do it right'
             };
           };
 
@@ -112,13 +132,23 @@
             return {
               _id: '525cf20451979dea2c000001',
               title: 'Brew Recipes',
-              description: 'Homebrew rules'
+              description: 'Homebrew rules!',
+              abv: 0.07,
+              originalGravity: 1070,
+              finalGravity: 1015,
+              stages : [],
+              instructions : 'Do it right'
             };
           };
 
           // fixture mock form input values
           scope.title = 'Brew Recipes';
           scope.description = 'Homebrew rules!';
+          scope.abv = 0.07;
+          scope.originalGravity = 1070;
+          scope.finalGravity = 1015;
+          scope.stages = [];
+          scope.instructions = 'Do it right';
 
           // test post request is sent
           $httpBackend.expectPOST('recipes', postRecipesData()).respond(responseRecipesData());
@@ -130,6 +160,11 @@
           // test form input(s) are reset
           expect(scope.title).toEqual('');
           expect(scope.description).toEqual('');
+          expect(scope.abv).toEqual(0);
+          expect(scope.originalGravity).toEqual(0);
+          expect(scope.finalGravity).toEqual(0);
+          expect(scope.stages).toEqual([]);
+          expect(scope.instructions).toEqual('');
 
           // test URL location to new object
           expect($location.path()).toBe('/recipes/' + responseRecipesData()._id);
@@ -137,12 +172,16 @@
 
       it('$scope.update(true) should update a valid recipe', inject(function(Recipes) {
 
-        // fixture rideshare
         var putRecipesData = function() {
           return {
             _id: '525a8422f6d0f87f0e407a33',
             title: 'Brew Recipes',
-            to: 'Homebrew rules!'
+            descirption: 'Homebrew rules!',
+            abv: 0.07,
+            originalGravity: 1070,
+            finalGravity: 1015,
+            stages : [],
+            instructions : 'Do it right'
           };
         };
 
@@ -157,11 +196,6 @@
 
         // testing the body data is out for now until an idea for testing the dynamic updated array value is figured out
         //$httpBackend.expectPUT(/recipes\/([0-9a-fA-F]{24})$/, putRecipesData()).respond();
-        /*
-                Error: Expected PUT /recipes\/([0-9a-fA-F]{24})$/ with different data
-                EXPECTED: {"_id":"525a8422f6d0f87f0e407a33","title":"Brew Recipes","to":"MEAN is great!"}
-                GOT:      {"_id":"525a8422f6d0f87f0e407a33","title":"Brew Recipes","to":"MEAN is great!","updated":[1383534772975]}
-                */
 
         // run controller
         scope.update(true);

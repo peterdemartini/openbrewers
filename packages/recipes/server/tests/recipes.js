@@ -31,6 +31,11 @@ describe('<Unit Test>', function() {
         recipe = new Recipe({
           title: 'Recipe Title',
           description: 'Recipe Description',
+          abv: 0.07,
+          originalGravity: 1070,
+          finalGravity: 1015,
+          stages : [],
+          instructions : 'Do it right',
           user: user
         });
 
@@ -44,6 +49,11 @@ describe('<Unit Test>', function() {
           should.not.exist(err);
           recipe.title.should.equal('Recipe Title');
           recipe.description.should.equal('Recipe Description');
+          recipe.abv.should.equal(0.07);
+          recipe.originalGravity.should.equal(1070);
+          recipe.finalGravity.should.equal(1015);
+          recipe.stages.should.instanceof(Array).and.have.lengthOf(0);
+          recipe.instructions.should.equal('Do it right');
           recipe.user.should.not.have.length(0);
           recipe.created.should.not.have.length(0);
           done();
