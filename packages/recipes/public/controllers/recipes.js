@@ -26,18 +26,16 @@ angular.module('mean.recipes')
           $location.path('recipes/' + response._id);
         });
 
-        this.title = '';
-        this.description = '';
-        this.type = '';
-        this.abv = 0;
-        this.originalGravity = 0;
-        this.finalGravity = 0;
-        this.stages = [];
-        this.instructions = '';
       } else {
         $scope.submitted = true;
       }
     };
+
+    $scope.types = [
+      {
+        label : 'Test Type'
+      }
+    ];
 
     $scope.remove = function(recipe) {
       if (recipe) {

@@ -157,15 +157,6 @@
           scope.create(true);
           $httpBackend.flush();
 
-          // test form input(s) are reset
-          expect(scope.title).toEqual('');
-          expect(scope.description).toEqual('');
-          expect(scope.abv).toEqual(0);
-          expect(scope.originalGravity).toEqual(0);
-          expect(scope.finalGravity).toEqual(0);
-          expect(scope.stages).toEqual([]);
-          expect(scope.instructions).toEqual('');
-
           // test URL location to new object
           expect($location.path()).toBe('/recipes/' + responseRecipesData()._id);
         });

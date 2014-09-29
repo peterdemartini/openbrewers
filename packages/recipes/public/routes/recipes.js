@@ -29,7 +29,6 @@ angular.module('mean.recipes').config(['$stateProvider',
         url: '/recipes',
         templateUrl: 'recipes/views/list.html',
         resolve: {
-          loggedin: checkLoggedin
         }
       })
       .state('create recipe', {
@@ -50,7 +49,6 @@ angular.module('mean.recipes').config(['$stateProvider',
         url: '/recipes/:recipeId',
         templateUrl: 'recipes/views/view.html',
         resolve: {
-          loggedin: checkLoggedin
         }
       });
   }

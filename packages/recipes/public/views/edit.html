@@ -1,26 +1,53 @@
-<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
-  <form name="articleForm" class="form-horizontal col-md-6" role="form" data-ng-submit="update(articleForm.$valid)" novalidate>
-    <div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.title.$invalid }">
-      <label mean-token="'edit-title'" for="title" class="col-md-2 control-label">Title</label>
-      <div class="col-md-10">
-        <input name="title" type="text" class="form-control" data-ng-model="article.title" id="title" placeholder="Title" required>
-        <div ng-show="submitted && articleForm.title.$invalid" class="help-block">
-          <p ng-show="articleForm.title.$error.required">Title is required</p>
+<section data-ng-controller="RecipesController" data-ng-init="findOne()">
+  <form name="recipeForm" class="form-horizontal col-md-12" role="form" data-ng-submit="update(recipeForm.$valid)" novalidate>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && recipeForm.title.$invalid }">
+      <label mean-token="'edit-title'" for="title" class="col-md-3 control-label">Title</label>
+      <div class="col-md-9">
+        <input name="title" type="text" class="form-control" data-ng-model="recipe.title" id="title" placeholder="Title" required>
+        <div ng-show="submitted && recipeForm.title.$invalid" class="help-block">
+          <p ng-show="recipeForm.title.$error.required">Title is required</p>
         </div>
       </div>
 
     </div>
-    <div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.content.$invalid }">
-      <label mean-token="'edit-content'" for="content" class="col-md-2 control-label">Content</label>
-      <div class="col-md-10">
-        <textarea name="content" data-ng-model="article.content" id="content" cols="30" rows="10" placeholder="Content" class="form-control" required></textarea>
-        <div ng-show="submitted && articleForm.content.$invalid" class="help-block">
-          <p ng-show="articleForm.content.$error.required">Content is required</p>
-        </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && recipeForm.escription.$invalid }">
+      <label mean-token="'create-description'" for="description" class="col-md-3 control-label">Description</label>
+      <div class="col-md-9">
+        <textarea name="description" ng-model="recipe.description" placeholder="Description" class="form-control"></textarea>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && recipeForm.type.$invalid }">
+      <label mean-token="'create-type'" for="type" class="col-md-3 control-label">Type</label>
+      <div class="col-md-9">
+        <select name="type" ng-model="recipe.type" ng-options="type.label for type in types" class="form-control"></select>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && recipeForm.abv.$invalid }">
+      <label mean-token="'create-abv'" for="abv" class="col-md-3 control-label">ABV (Alcohol By Volume)</label>
+      <div class="col-md-9">
+        <input type="number" placeholder="6.4" name="abv" ng-model="recipe.abv" class="form-control" />
+      </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && recipeForm.originalGravity.$invalid }">
+      <label mean-token="'create-originalGravity'" for="originalGravity" class="col-md-3 control-label">Original Gravity</label>
+      <div class="col-md-9">
+        <input type="number" placeholder="1040" name="originalGravity" ng-model="recipe.originalGravity" class="form-control" />
+      </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && recipeForm.finalGravity.$invalid }">
+      <label mean-token="'create-finalGravity'" for="finalGravity" class="col-md-3 control-label">Final Gravity</label>
+      <div class="col-md-9">
+        <input type="number" placeholder="1040" name="finalGravity" ng-model="recipe.finalGravity" class="form-control" />
+      </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && recipeForm.instructions.$invalid }">
+      <label mean-token="'create-instructions'" for="instructions" class="col-md-3 control-label">Instructions</label>
+      <div class="col-md-9">
+        <textarea name="instructions" ng-model="recipe.instructions" placeholder="Instructions" class="form-control"></textarea>
       </div>
     </div>
     <div class="form-group">
-      <div class="col-md-offset-2 col-md-10">
+      <div class="col-md-offset-2 col-md-9">
         <button mean-token="'edit-submit'" type="submit" class="btn btn-default">Submit</button>
       </div>
     </div>

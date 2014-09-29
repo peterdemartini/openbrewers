@@ -1,14 +1,14 @@
-<section data-ng-controller="ArticlesController" data-ng-init="findOne()">
-  <span>{{article.created | date:'medium'}}</span> /
-  <span>{{article.user.name}}</span>
-  <h2>{{article.title}}</h2>
-  <div data-ng-if="hasAuthorization(article)">
-    <a class="btn" href="/#!/articles/{{article._id}}/edit">
+<section data-ng-controller="RecipesController" data-ng-init="findOne()">
+  <span>{{recipe.created | date:'medium'}}</span> /
+  <span>{{recipe.user.name}}</span>
+  <h2>{{recipe.title}}</h2>
+  <div data-ng-if="hasAuthorization(recipe)">
+    <a class="btn" href="/#!/recipes/{{recipe._id}}/edit">
       <i class="glyphicon glyphicon-edit"></i>
     </a>
-    <a class="btn" data-ng-click="remove(article);">
+    <a class="btn" data-ng-click="remove(recipe);">
       <i class="glyphicon glyphicon-trash"></i>
     </a>
   </div>
-  <div>{{article.content}}</div>
+  <div>{{recipe.content}}</div>
 </section>
